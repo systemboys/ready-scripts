@@ -1,0 +1,74 @@
+[25-Jul-2020 17:59:52 America/Sao_Paulo] PHP Fatal error:  Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8
+[05-Aug-2020 09:45:41 America/Sao_Paulo] PHP Fatal error:  Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8
+[10-Aug-2020 11:07:09 America/Sao_Paulo] PHP Fatal error:  Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8
+[10-Aug-2020 20:00:08 America/Sao_Paulo] PHP Fatal error:  Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8
+[05-Sep-2020 23:17:32 America/Sao_Paulo] PHP Fatal error:  Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8
+[11-Nov-2020 22:36:26 America/Argentina/Buenos_Aires] PHP Fatal error:  Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8
+[17-Nov-2020 23:24:18 America/Argentina/Buenos_Aires] PHP Fatal error:  Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Read.class.php on line 8
+[18-Nov-2020 07:22:46 America/Argentina/Buenos_Aires] PHP Fatal error:  Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Update.class.php on line 8
+[19-Nov-2020 03:11:08 America/Argentina/Buenos_Aires] PHP Fatal error:  Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Update.class.php on line 8
+[21-Nov-2020 11:57:26 America/Argentina/Buenos_Aires] PHP Fatal error:  Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Update.class.php on line 8
+[09-Dec-2020 16:42:33 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[09-Dec-2020 16:42:33 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8
+[29-Dec-2020 14:04:38 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[29-Dec-2020 14:04:38 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Read.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Read.class.php on line 8
+[04-Jan-2021 00:02:07 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[04-Jan-2021 00:02:07 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Create.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Create.class.php on line 8
+[11-Feb-2021 00:02:37 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[11-Feb-2021 01:49:43 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[11-Feb-2021 01:49:43 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8
+[16-Feb-2021 18:58:43 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[16-Feb-2021 18:58:43 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Create.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Create.class.php on line 8
+[22-Mar-2021 04:38:41 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[22-Mar-2021 04:38:41 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8
+[25-Apr-2021 15:27:55 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[25-Apr-2021 15:27:55 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Update.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Update.class.php on line 8
+[30-Apr-2021 08:31:32 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[01-May-2021 00:01:20 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[01-May-2021 00:01:25 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[01-May-2021 00:01:25 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Create.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Create.class.php on line 8
+[01-May-2021 00:01:30 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[01-May-2021 00:01:30 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8
+[01-May-2021 00:01:36 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[01-May-2021 00:01:36 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Read.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Read.class.php on line 8
+[01-May-2021 00:01:41 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[01-May-2021 00:01:41 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Update.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Update.class.php on line 8
+[02-May-2021 08:37:05 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[03-May-2021 00:39:28 America/Fortaleza] PHP Warning:  Version warning: Imagick was compiled against Image Magick version 1654 but version 1650 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[03-May-2021 00:39:28 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Class 'Conn' not found in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php:8
+Stack trace:
+#0 {main}
+  thrown in /home1/compa048/public_html/POO/_app/Conn/Delete.class.php on line 8

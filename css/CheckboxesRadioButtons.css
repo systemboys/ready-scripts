@@ -1,0 +1,51 @@
+/*PROPRIEDADES DE CHECKBOX E RADIO BUTTON*/
+.CheckboxRadioLabel {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 15px;
+    font-size: 13px;
+}
+.CheckboxRadioInput {
+    display: none;
+}
+.CheckboxRadioLabel:before {
+    content: "";
+    display: inline-block;
+
+    width: 16px;
+    height: 16px;
+
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: #fff; /*Old: #aaa*/
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+}
+
+/*RADIO BUTTON*/
+.RadioLabel:before {
+    border-radius: 8px;
+}
+.RadioInput[type=radio]:checked + label:before {
+    content: "\2022";
+    color: #666; /*Old: #f3f3f3*/
+    font-size: 40px; /*Tamanho da bolinha de marcação no radio*/
+    text-align: center;
+    line-height: 9.4px; /*Altura da bolinha de marcação no radio*/
+}
+
+/*CHECKBOX*/
+.CheckboxLabel:before {
+    border-radius: 3px;
+}
+.CheckboxInput[type=checkbox]:checked + label:before {
+    content: "\2713";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 15px;
+    color: #666; /*Old: #f3f3f3*/
+    text-align: center;
+    line-height: 15px;
+}
