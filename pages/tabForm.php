@@ -381,11 +381,18 @@ elseif (
                 top: 2px;
                 right: 20px;
                 color: #0d6efd;
+                opacity: 50%;
+                transition-duration: 0.5s;
+                font-size: 2em;
                 cursor: pointer;
+            }
+            .linksForm .closeLinkRecord:hover {
+                opacity: 80%;
+                transition-duration: 0.5s;
             }
         </style>
         <div class="linksForm card mb-3">
-            <i class="fas fa-window-close closeFormLinks closeLinkRecord"></i>
+            <i class="fas fa-window-close closeFormLinks closeLinkRecord" title="Fechar"></i>
             <img src="<?= HOME . "/pic/this-page/background-top-notebook.png" ?>" class="card-img-top" alt="...">
             <div class="card-body">
                 <!-- jQuery.Form -->
@@ -643,7 +650,14 @@ elseif (
                                     top: 15px;
                                     right: 18px;
                                     color: #f00;
+                                    opacity: 50%;
+                                    transition-duration: 0.5s;
+                                    font-size: 2em;
                                     cursor: pointer;
+                                }
+                                .alert_getVideoCoverOnVoutube .closeLinkPopup:hover {
+                                    opacity: 80%;
+                                    transition-duration: 0.5s;
                                 }
                             </style>
                             <script>
@@ -682,7 +696,7 @@ elseif (
                                         if (name != "") {
                                             window.open("https://www.google.com.br/search?q=" + newName + "&sxsrf=ALiCzsbMeZSVtG1phI4Rel_tIlF4WZjfig:1655921023170&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjju_LC0sH4AhVWs5UCHSCpDtQQ_AUoAnoECAEQBA&biw=1366&bih=649&dpr=1", "_blank");
                                         } else {
-                                            $("body").append("<div class='alert_getVideoCoverOnVoutube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>O campo \"Nome do Link\" está vazio! </p></div>");
+                                            $("body").append("<div class='alert_getVideoCoverOnVoutube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>O campo \"Nome do Link\" está vazio! </p></div>");
                                         }
                                     });
                                     $("#getVideoCoverOnVoutube").click(function() {
@@ -695,13 +709,13 @@ elseif (
                                                 var string = link;
                                                 var linkReturnExplode = string.split("v=");
                                                 var linkReturn = linkReturnExplode[1];
-                                                $("body").append("<div class='alert_getVideoCoverOnVoutube' style='overflow: scroll; width: 300px; height: 400px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>Cabas do vídeo do <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span> encontradas, clique em uma delas!</p><div class='thumbnailBox'><div class='thumbnailBox_FrontCover'><span>Média (480 x 360)</span><img id='hqdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/hqdefault.jpg' class='img-fluid' alt='...'></div><div class='thumbnailBox_FrontCover'><span>Média (320 x 180)</span><img id='mqdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/mqdefault.jpg' class='img-fluid' alt='...'></div><div class='thumbnailBox_FrontCover'><span>Média (1280 x 720)</span><img id='maxresdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/maxresdefault.jpg' class='img-fluid' alt='...'></div></div></div>");
+                                                $("body").append("<div class='alert_getVideoCoverOnVoutube' style='overflow: scroll; width: 300px; height: 400px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>Cabas do vídeo do <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span> encontradas, clique em uma delas!</p><div class='thumbnailBox'><div class='thumbnailBox_FrontCover'><span>Média (480 x 360)</span><img id='hqdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/hqdefault.jpg' class='img-fluid' alt='...'></div><div class='thumbnailBox_FrontCover'><span>Média (320 x 180)</span><img id='mqdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/mqdefault.jpg' class='img-fluid' alt='...'></div><div class='thumbnailBox_FrontCover'><span>Média (1280 x 720)</span><img id='maxresdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/maxresdefault.jpg' class='img-fluid' alt='...'></div></div></div>");
                                             } else {
-                                                $("body").append("<div class='alert_getVideoCoverOnVoutube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>O link informado parece não ser do <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span>!</p></div>");
+                                                $("body").append("<div class='alert_getVideoCoverOnVoutube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>O link informado parece não ser do <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span>!</p></div>");
                                             }
                                         } else {
                                             // Exibir a PopUp de alerta de campo vazio
-                                            $("body").append("<div class='alert_getVideoCoverOnVoutube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>Link não encontrado, informe o link do vídeo no <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span>!</p></div>");
+                                            $("body").append("<div class='alert_getVideoCoverOnVoutube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>Link não encontrado, informe o link do vídeo no <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span>!</p></div>");
                                         }
                                     });
                                 });
