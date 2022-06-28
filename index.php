@@ -132,6 +132,7 @@ foreach ($Read->getResult() as $readyScriptsBackgroundsDB): endforeach;
                 }
                 /* /Ícone indicador de Web que fica no canto superior direito da capa do link */
                 body .row .col-sm-9 .tab-content .tab-pane .container .row .scriptTargetReady .container .row div .cardScriptTargetReadyAll img {
+                    background: rgba(255,255,255,.8);
                     margin: 10px auto 0 -5%;
                     width: 110%;
                     border-radius: 4px;
