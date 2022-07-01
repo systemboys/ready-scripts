@@ -586,7 +586,7 @@ elseif (
                         </div>
                         <div class="mb-3 col-sm-9 imageLinkField">
                             <style>
-                                .alert_getVideoCoverOnVoutube {
+                                .alert_getVideoCoverOnYouTube {
                                     position: fixed;
                                     background: #e1e1e1 !important;
                                     margin: 0;
@@ -598,22 +598,22 @@ elseif (
                                     transform: translate(-50%, -50%);
                                     z-index: 9999;
                                 }
-                                .alert_getVideoCoverOnVoutube h1 {
+                                .alert_getVideoCoverOnYouTube h1 {
                                     background: #ededed;
                                     text-align: center;
                                     margin: 0;
                                     padding: 0 10px;
                                 }
-                                .alert_getVideoCoverOnVoutube p {
+                                .alert_getVideoCoverOnYouTube p {
                                     background: #f7f7f7;
                                     text-align: center;
                                     margin: 0;
                                     padding: 0 10px;
                                 }
-                                .alert_getVideoCoverOnVoutube .fa-exclamation-triangle {
+                                .alert_getVideoCoverOnYouTube .fa-exclamation-triangle {
                                     color: #f90;
                                 }
-                                .alert_getVideoCoverOnVoutube .YouTube_text_logo {
+                                .alert_getVideoCoverOnYouTube .YouTube_text_logo {
                                     background: #000;
                                     margin: 0;
                                     padding: 2px 5px;
@@ -621,10 +621,10 @@ elseif (
                                     color: #fff;
                                     font-weight: bold;
                                 }
-                                .alert_getVideoCoverOnVoutube .thumbnailBox {
+                                .alert_getVideoCoverOnYouTube .thumbnailBox {
                                     margin: 0 5px 0 0;
                                 }
-                                .alert_getVideoCoverOnVoutube .thumbnailBox .thumbnailBox_FrontCover span {
+                                .alert_getVideoCoverOnYouTube .thumbnailBox .thumbnailBox_FrontCover span {
                                     position: absolute;
                                     background: rgba(0,0,0,.75);
                                     margin: 5px;
@@ -634,18 +634,18 @@ elseif (
                                     text-shadow: -1px 1px 2px #000;
                                     z-index: 1;
                                 }
-                                .alert_getVideoCoverOnVoutube .thumbnailBox .thumbnailBox_FrontCover img {
+                                .alert_getVideoCoverOnYouTube .thumbnailBox .thumbnailBox_FrontCover img {
                                     opacity: 80%;
                                     transition-duration: 0.5s;
                                     margin: 2px;
                                     border-radius: 5px;
                                 }
-                                .alert_getVideoCoverOnVoutube .thumbnailBox .thumbnailBox_FrontCover img:hover {
+                                .alert_getVideoCoverOnYouTube .thumbnailBox .thumbnailBox_FrontCover img:hover {
                                     opacity: 100%;
                                     transition-duration: 0.5s;
                                     cursor: pointer;
                                 }
-                                .alert_getVideoCoverOnVoutube .closeLinkPopup {
+                                .alert_getVideoCoverOnYouTube .closeLinkPopup {
                                     position: absolute;
                                     top: 15px;
                                     right: 18px;
@@ -655,7 +655,7 @@ elseif (
                                     font-size: 2em;
                                     cursor: pointer;
                                 }
-                                .alert_getVideoCoverOnVoutube .closeLinkPopup:hover {
+                                .alert_getVideoCoverOnYouTube .closeLinkPopup:hover {
                                     opacity: 80%;
                                     transition-duration: 0.5s;
                                 }
@@ -682,7 +682,7 @@ elseif (
                                             var videoLinkOnYouTube = "";
                                     }
                                     document.getElementById("image").value=videoLinkOnYouTube;
-                                    $('.alert_getVideoCoverOnVoutube').fadeOut();
+                                    $('.alert_getVideoCoverOnYouTube').fadeOut();
                                 }
                                 // Limar o campo "Link da imagem"
                                 $(".clearImageLinkField").click(function() {
@@ -696,10 +696,10 @@ elseif (
                                         if (name != "") {
                                             window.open("https://www.google.com.br/search?q=" + newName + "&sxsrf=ALiCzsbMeZSVtG1phI4Rel_tIlF4WZjfig:1655921023170&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjju_LC0sH4AhVWs5UCHSCpDtQQ_AUoAnoECAEQBA&biw=1366&bih=649&dpr=1", "_blank");
                                         } else {
-                                            $("body").append("<div class='alert_getVideoCoverOnVoutube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>O campo \"Nome do Link\" está vazio! </p></div>");
+                                            $("body").append("<div class='alert_getVideoCoverOnYouTube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>O campo \"Nome do Link\" está vazio! </p></div>");
                                         }
                                     });
-                                    $("#getVideoCoverOnVoutube").click(function() {
+                                    $("#getVideoCoverOnYouTube").click(function() {
                                         var link = $("#link").val();
                                         if (link != "") {
                                             // Verificar se existe o trecho "youtube" no Link
@@ -709,18 +709,18 @@ elseif (
                                                 var string = link;
                                                 var linkReturnExplode = string.split("v=");
                                                 var linkReturn = linkReturnExplode[1];
-                                                $("body").append("<div class='alert_getVideoCoverOnVoutube' style='overflow: scroll; width: 300px; height: 400px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>Cabas do vídeo do <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span> encontradas, clique em uma delas!</p><div class='thumbnailBox'><div class='thumbnailBox_FrontCover'><span>Média (480 x 360)</span><img id='hqdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/hqdefault.jpg' class='img-fluid' alt='...'></div><div class='thumbnailBox_FrontCover'><span>Média (320 x 180)</span><img id='mqdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/mqdefault.jpg' class='img-fluid' alt='...'></div><div class='thumbnailBox_FrontCover'><span>Média (1280 x 720)</span><img id='maxresdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/maxresdefault.jpg' class='img-fluid' alt='...'></div></div></div>");
+                                                $("body").append("<div class='alert_getVideoCoverOnYouTube' style='overflow: scroll; width: 300px; height: 400px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>Cabas do vídeo do <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span> encontradas, clique em uma delas!</p><div class='thumbnailBox'><div class='thumbnailBox_FrontCover'><span>Média (480 x 360)</span><img id='hqdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/hqdefault.jpg' class='img-fluid' alt='...'></div><div class='thumbnailBox_FrontCover'><span>Média (320 x 180)</span><img id='mqdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/mqdefault.jpg' class='img-fluid' alt='...'></div><div class='thumbnailBox_FrontCover'><span>Média (1280 x 720)</span><img id='maxresdefault' onclick='sendToTheField(this.id)' src='https://img.youtube.com/vi/" + linkReturn + "/maxresdefault.jpg' class='img-fluid' alt='...'></div></div></div>");
                                             } else {
-                                                $("body").append("<div class='alert_getVideoCoverOnVoutube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>O link informado parece não ser do <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span>!</p></div>");
+                                                $("body").append("<div class='alert_getVideoCoverOnYouTube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>O link informado parece não ser do <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span>!</p></div>");
                                             }
                                         } else {
                                             // Exibir a PopUp de alerta de campo vazio
-                                            $("body").append("<div class='alert_getVideoCoverOnVoutube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>Link não encontrado, informe o link do vídeo no <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span>!</p></div>");
+                                            $("body").append("<div class='alert_getVideoCoverOnYouTube' style='width: 300px;'><i onclick='this.parentElement.style.display=`none`;' class='fas fa-window-close closeLinkPopup' title='Fechar'></i><h1><i class='fas fa-exclamation-triangle'></i>Ops!</h1><p>Link não encontrado, informe o link do vídeo no <span class='YouTube_text_logo'><i class='fab fa-youtube' style='color: #f00'></i> YouTube</span>!</p></div>");
                                         }
                                     });
                                 });
                             </script>
-                            <label for="image" class="form-label">Link da imagem <i id="searchGoogleImages" class="fab fa-google" style="color: #f90; cursor: pointer;" title="Procurar no Google Imagens"></i> <i id="getVideoCoverOnVoutube" class="fab fa-youtube" style="color: #f00; cursor: pointer;" title="Obter capa se o link for do YouTube"></i> <i class="fas fa-broom clearImageLinkField" style="color: #f60; cursor: pointer;" title="Limpar o campo do Link da imagem"></i></label>
+                            <label for="image" class="form-label">Link da imagem <i id="searchGoogleImages" class="fab fa-google" style="color: #f90; cursor: pointer;" title="Procurar no Google Imagens"></i> <i id="getVideoCoverOnYouTube" class="fab fa-youtube" style="color: #f00; cursor: pointer;" title="Obter capa se o link for do YouTube"></i> <i class="fas fa-broom clearImageLinkField" style="color: #f60; cursor: pointer;" title="Limpar o campo do Link da imagem"></i></label>
                             <input type="text" class="form-control inputNameForm" id="image" name="image"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['image']}\"" : NULL ?> placeholder="https://www.site.com/imgs/img.png">
                         </div>
                         <div class="mb-3 col-sm-3">
