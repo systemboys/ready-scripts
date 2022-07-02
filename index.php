@@ -234,6 +234,13 @@ foreach ($Read->getResult() as $readyScriptsBackgroundsDB): endforeach;
                     margin: 0;
                     z-index: 9999;
                 }
+                /* CKEditor */
+                #cke_1_top,
+                #cke_1_bottom {
+                    background: #d1d1d1;
+                    border-bottom: none;
+                }
+                /* /CKEditor */
                 /* Screen até 320px */
                 #loadSys {
                     position: fixed;
