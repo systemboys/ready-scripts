@@ -231,9 +231,6 @@ foreach ($Read->getResult() as $readyScriptsBackgroundsDB): endforeach;
                 });
                 // --------------- /Carregar as Abas ----------
             </script>
-            <script>
-                
-            </script>
             <div class="col-sm-3">
                 <div class="list-group tabList" id="list-tab" role="tablist"></div>
             </div>
