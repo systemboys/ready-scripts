@@ -277,15 +277,11 @@ if ($idAdmin != "deslogado"):
                     <div class='col-md-4'>
                         <div class='card-body'>
                             ";
-                            // Selecionar e recuperar os dados de 'Links de Scripts Prontos' para contar os hospedados
-                            $Read->FullRead("SELECT * FROM {$CSReadyScriptsLinks} WHERE primary_email = '{$primary_email}' AND link_location = 'hosted'");
-                            $quantityOfScripts = $Read->getRowCount();
-
                             // Selecionar e recuperar os dados de 'Links de Scripts Prontos' para contar links externos
                             $Read->FullRead("SELECT * FROM {$CSReadyScriptsLinks} WHERE primary_email = '{$primary_email}' AND link_location = 'external'");
                             $quantityOfLinks = $Read->getRowCount();
                             echo "
-                            <h5 class='card-title'>{$readyScriptsSettingsDB['page_title']}<br>Scripts: <strong>{$quantityOfScripts}</strong><br>Links externos: <strong>{$quantityOfLinks}</strong><br>Total de itens: <strong>" . ($quantityOfScripts + $quantityOfLinks) . "</strong></h5>
+                            <h5 class='card-title'>{$readyScriptsSettingsDB['page_title']}<br>Links externos: <strong>{$quantityOfLinks}</strong></h5>
                             <p class='card-text'>{$readyScriptsSettingsDB['about']}</p>
                             <p class='card-text'><small class='text-muted'>&copy; {$readyScriptsSettingsDB['copyright']}</small></p>
                         </div>
