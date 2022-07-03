@@ -10,6 +10,14 @@ $Read->ExeRead($CSReadyScriptsUser, "WHERE id = :id", "id={$idAdmin}");
 foreach ($Read->getResult() as $readyScriptsUserDB): endforeach;
 $primary_email = isset($readyScriptsUserDB['primary_email']) ? $readyScriptsUserDB['primary_email'] : NULL;
 
+// Selecionar e recuperar os dados de "Configurações da Página"
+$Read->ExeRead($CSReadyScriptsSettings, "WHERE primary_email = :primary_email", "primary_email={$primary_email}");
+foreach ($Read->getResult() as $readyScriptsSettingsDB): endforeach;
+
+// Selecionar e recuperar os dados de "Planos de fundo".
+$Read->ExeRead($CSreadyScriptsBackgrounds, "WHERE primary_email = :primary_email AND id = :id", "primary_email={$primary_email}&id=" . (isset($readyScriptsSettingsDB['background_image']) ? $readyScriptsSettingsDB['background_image'] : NULL));
+foreach ($Read->getResult() as $readyScriptsBackgroundsDB): endforeach;
+
 if ($idAdmin != "deslogado"):
     if (isset($_GET['action']) && $_GET['action'] == "scriptTargetReady"):
         ######## DETALHES COMPLETO DE UM LINK ########
@@ -234,6 +242,107 @@ if ($idAdmin != "deslogado"):
             endforeach;
         endif;
         include './indice_scriptTargetReady.php'; // Links da paginação
+    elseif (isset($_GET['action']) && $_GET['action'] == "tabList"):
+        echo "
+        <a class='list-group-item list-group-item-action active list-group-item-dark' id='list-home-list' data-bs-toggle='list' href='#list-home' role='tab' aria-controls='list-home'>Home</a>
+        ";
+        // Selecionar e recuperar os dados de "Scripts Prontos - Tabs"
+        $Read->FullRead("SELECT * FROM $CSReadyScriptsTabs WHERE primary_email = '{$primary_email}' ORDER BY name ASC");
+        if ($Read->getResult()):
+            foreach ($Read->getResult() as $readyScriptsTabsDB):
+                // Selecionar e recuperar os dados de "Links de Scripts Prontos" para contar os registros
+                $Read->ExeRead($CSReadyScriptsLinks, "WHERE tab = :tab", "tab={$readyScriptsTabsDB['id']}");
+                $countLinks = $Read->getRowCount();
+                echo "
+        <a class='list-group-item list-group-item-action list-group-item-secondary list-group-item d-flex justify-content-between align-items-start' id='list-{$readyScriptsTabsDB['slug']}-list' onclick='clearScriptTarget({$readyScriptsTabsDB['id']})' data-bs-toggle='list' href='#list-{$readyScriptsTabsDB['slug']}' role='tab' aria-controls='list-{$readyScriptsTabsDB['slug']}'>{$readyScriptsTabsDB['name']}
+            <span class='badge bg-primary rounded-pill'>{$countLinks}</span>
+        </a>
+                ";
+            endforeach;
+        endif;
+        echo "
+        <a class='list-group-item list-group-item-action list-group-item-secondary' id='list-aboutTheSystem-list' data-bs-toggle='list' href='#list-aboutTheSystem' role='tab' aria-controls='list-aboutTheSystem'><i class='fas fa-info-circle'></i> Sobre o sistema</a>
+        <a id='tabForm' onclick='popUpWindow(this.id, `" . HOME . "/pages/tabForm.php?page=tabRecordForm`)' class='list-group-item list-group-item-action list-group-item-dark' href='#'><i class='fas fa-folder-plus'></i> Adicionar nova Aba...</a>
+        ";
+    elseif (isset($_GET['action']) && $_GET['action'] == "tabContent"):
+        echo "
+        <div class='tab-pane fade show active' id='list-home' role='tabpanel' aria-labelledby='list-home-list'>
+            <div class='card mb-3' style='max-width: 100%;'>
+                <div class='row g-0'>
+                    <div class='col-md-8'>
+        ";
+        include '../includes/carousel.php';
+        echo "
+                    </div>
+                    <div class='col-md-4'>
+                        <div class='card-body'>
+                            ";
+                            // Selecionar e recuperar os dados de 'Links de Scripts Prontos' para contar os hospedados
+                            $Read->FullRead("SELECT * FROM {$CSReadyScriptsLinks} WHERE primary_email = '{$primary_email}' AND link_location = 'hosted'");
+                            $quantityOfScripts = $Read->getRowCount();
+
+                            // Selecionar e recuperar os dados de 'Links de Scripts Prontos' para contar links externos
+                            $Read->FullRead("SELECT * FROM {$CSReadyScriptsLinks} WHERE primary_email = '{$primary_email}' AND link_location = 'external'");
+                            $quantityOfLinks = $Read->getRowCount();
+                            echo "
+                            <h5 class='card-title'>{$readyScriptsSettingsDB['page_title']}<br>Scripts: <strong>{$quantityOfScripts}</strong><br>Links externos: <strong>{$quantityOfLinks}</strong><br>Total de itens: <strong>" . ($quantityOfScripts + $quantityOfLinks) . "</strong></h5>
+                            <p class='card-text'>{$readyScriptsSettingsDB['about']}</p>
+                            <p class='card-text'><small class='text-muted'>&copy; {$readyScriptsSettingsDB['copyright']}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ";
+        // Selecionar e recuperar os dados de "Scripts Prontos - Tabs"
+        $Read->FullRead("SELECT * FROM $CSReadyScriptsTabs WHERE primary_email = '{$primary_email}' ORDER BY name ASC");
+        if ($Read->getResult()):
+            foreach ($Read->getResult() as $readyScriptsTabsDB):
+                echo "
+        <div class='tab-pane fade' id='list-{$readyScriptsTabsDB['slug']}' role='tabpanel' aria-labelledby='list-{$readyScriptsTabsDB['slug']}-list'>
+            <div class='container' style='padding: 0'>
+                <div class='row'>
+                    <div class='col-sm-3'>
+                        <div class='list-group'>
+                            <button id='allScripts_{$readyScriptsTabsDB['id']}' onclick='scriptTargetReady(this.id), subTabMenuItem(this.id)' type='button' class='list-group-item list-group-item-action list-group-item-secondary d-flex justify-content-between align-items-start subTabMenuItem'>
+                                Todos os links&nbsp;
+                                <i class='fa-solid fa-table-cells'></i>
+                            </button>
+                ";
+                // Selecionar e recuperar os dados de "Scripts Prontos - Links"
+                $Read->FullRead("SELECT * FROM {$CSReadyScriptsSubTabs} WHERE primary_email = '{$primary_email}' AND tab = '{$readyScriptsTabsDB['id']}' ORDER BY name ASC");
+                if ($Read->getResult()):
+                    foreach ($Read->getResult() as $readyScriptsSubTabsDB):
+                        echo "
+                            <button id='scripts_{$readyScriptsSubTabsDB['id']}' onclick='scriptTargetReady(this.id), subTabMenuItem(this.id)' type='button' class='list-group-item list-group-item-action list-group-item-secondary d-flex justify-content-between align-items-start subTabMenuItem'>
+                                " . shortenTextByWords($readyScriptsSubTabsDB['name'], 20) . "&nbsp;
+                                <i class='fa-solid fa-earth-americas'></i>
+                            </button>
+                        ";
+                    endforeach;
+                endif;
+                echo "
+                            <button id='subTabForm' onclick='popUpWindow(this.id, `" . HOME . "/pages/tabForm.php?page=subTabRecordForm&id={$readyScriptsTabsDB['id']}`), subTabMenuItem(this.id)' type='button' class='list-group-item list-group-item-action list-group-item-secondary align-items-start'>
+                                <i class='fas fa-folder-plus'></i> Nova SubAba...
+                            </button>
+                        </div>
+                        <div class='btn-group editOrDeleteTab' role='group' aria-label='Basic mixed styles example'>
+                            <button type='button' id='tabForm' onclick='popUpWindow(this.id, `" . HOME . "/pages/tabForm.php?page=tabEditForm&id={$readyScriptsTabsDB['id']}`)' class='btn btn-primary'><i class='fas fa-edit'></i> Editar</button>
+                            <button type='button' id='deleteTab' onclick='popUpWindow(this.id, `" . HOME . "/pages/tabForm.php?page=deleteTab&id={$readyScriptsTabsDB['id']}`)' class='btn btn-danger'><i class='fas fa-trash-alt'></i> Excluir</button>
+                        </div>
+                    </div>
+                    <div class='col-sm-9 scriptTargetReady'></div>
+                </div>
+            </div>
+        </div>
+                ";
+            endforeach;
+        endif;
+        echo "
+        <div class='tab-pane fade show' id='list-aboutTheSystem' role='tabpanel' aria-labelledby='list-aboutTheSystem-list'>
+            <h1>A construir...</h1>
+        </div>
+        ";
     endif;
 else:
     echo "
