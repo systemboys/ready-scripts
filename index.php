@@ -205,37 +205,40 @@ foreach ($Read->getResult() as $readyScriptsBackgroundsDB): endforeach;
             </div>
         </div>
         <div class="row" style="margin: 0; padding: 10px">
+            <script>
+                // --------------- Carregar as Abas ----------
+                $("#topProgressBar").addClass("progress-bar-striped progress-bar-animated");
+                $.ajax({
+                    url: "<?= HOME . "/func/func.index.php?action=tabList" ?>",
+                    type: "GET", // Método GET
+                    success: function(tabList) {
+                        $(".tabList").html(tabList); // DIV de destino.
+                        $("#topProgressBar").removeClass("progress-bar-striped progress-bar-animated");
+                        // ------- Carregar as SubAbas -------
+                        setTimeout(function() {
+                            $("#topProgressBar").addClass("progress-bar-striped progress-bar-animated");
+                            $.ajax({
+                                url: "<?= HOME . "/func/func.index.php?action=tabContent" ?>",
+                                type: "GET", // Método GET
+                                success: function(tabContent) {
+                                    $(".tabContent").html(tabContent); // DIV de destino.
+                                    $("#topProgressBar").removeClass("progress-bar-striped progress-bar-animated");
+                                }
+                            });
+                        }, 1000);
+                        // ------- /Carregar as SubAbas -------
+                    }
+                });
+                // --------------- /Carregar as Abas ----------
+            </script>
+            <script>
+                
+            </script>
             <div class="col-sm-3">
-                <div class="list-group tabList" id="list-tab" role="tablist">
-                    <script>
-                        // Carregar arquivo em uma determinada DIV.
-                        $("#topProgressBar").addClass("progress-bar-striped progress-bar-animated");
-                        $.ajax({
-                            url: "<?= HOME . "/func/func.index.php?action=tabList" ?>",
-                            type: "GET", // Método GET
-                            success: function(tabList) {
-                                $("#topProgressBar").removeClass("progress-bar-striped progress-bar-animated");
-                                $(".tabList").html(tabList); // DIV de destino.
-                            }
-                        });
-                    </script>
-                </div>
+                <div class="list-group tabList" id="list-tab" role="tablist"></div>
             </div>
             <div class="col-sm-9">
-                <div id="nav-tabContent" class="tab-content tabContent">
-                    <script>
-                        // Carregar arquivo em uma determinada DIV.
-                        $("#topProgressBar").addClass("progress-bar-striped progress-bar-animated");
-                        $.ajax({
-                            url: "<?= HOME . "/func/func.index.php?action=tabContent" ?>",
-                            type: "GET", // Método GET
-                            success: function(tabContent) {
-                                $("#topProgressBar").removeClass("progress-bar-striped progress-bar-animated");
-                                $(".tabContent").html(tabContent); // DIV de destino.
-                            }
-                        });
-                    </script>
-                </div>
+                <div id="nav-tabContent" class="tab-content tabContent"></div>
             </div>
         </div>
 
