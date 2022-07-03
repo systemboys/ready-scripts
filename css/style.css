@@ -37,7 +37,7 @@ body .row .col-sm-9 .tab-content .tab-pane .container .row .scriptTargetReady .c
 }
 /* /Ícone indicador de Web que fica no canto superior direito da capa do link */
 body .row .col-sm-9 .tab-content .tab-pane .container .row .scriptTargetReady .container .row div .cardScriptTargetReadyAll img {
-    background: rgba(255,255,255,.8);
+    background: #fff;
     margin: 10px auto 0 -5%;
     width: 110%;
     border-radius: 4px;
