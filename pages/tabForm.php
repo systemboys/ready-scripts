@@ -390,6 +390,81 @@ elseif (
                 opacity: 80%;
                 transition-duration: 0.5s;
             }
+            /* Alertas do campo do Linkda imagem */
+            .alert_getVideoCoverOnYouTube {
+                position: fixed;
+                background: #e1e1e1 !important;
+                margin: 0;
+                padding: 10px 0;
+                top: 50%;
+                left: 50%;
+                border-radius: 5px;
+                box-shadow: -1px 10px 15px rgba(0,0,0,.6);
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+            }
+            .alert_getVideoCoverOnYouTube h1 {
+                background: #ededed;
+                text-align: center;
+                margin: 0;
+                padding: 0 10px;
+            }
+            .alert_getVideoCoverOnYouTube p {
+                background: #f7f7f7;
+                text-align: center;
+                margin: 0;
+                padding: 0 10px;
+            }
+            .alert_getVideoCoverOnYouTube .fa-exclamation-triangle {
+                color: #f90;
+            }
+            .alert_getVideoCoverOnYouTube .YouTube_text_logo {
+                background: #000;
+                margin: 0;
+                padding: 2px 5px;
+                border-radius: 5px;
+                color: #fff;
+                font-weight: bold;
+            }
+            .alert_getVideoCoverOnYouTube .thumbnailBox {
+                margin: 0 5px 0 0;
+            }
+            .alert_getVideoCoverOnYouTube .thumbnailBox .thumbnailBox_FrontCover span {
+                position: absolute;
+                background: rgba(0,0,0,.75);
+                margin: 5px;
+                padding: 1px 5px;
+                border-radius: 3px;
+                color: #fff;
+                text-shadow: -1px 1px 2px #000;
+                z-index: 1;
+            }
+            .alert_getVideoCoverOnYouTube .thumbnailBox .thumbnailBox_FrontCover img {
+                opacity: 80%;
+                transition-duration: 0.5s;
+                margin: 2px;
+                border-radius: 5px;
+            }
+            .alert_getVideoCoverOnYouTube .thumbnailBox .thumbnailBox_FrontCover img:hover {
+                opacity: 100%;
+                transition-duration: 0.5s;
+                cursor: pointer;
+            }
+            .alert_getVideoCoverOnYouTube .closeLinkPopup {
+                position: absolute;
+                top: 15px;
+                right: 18px;
+                color: #f00;
+                opacity: 50%;
+                transition-duration: 0.5s;
+                font-size: 2em;
+                cursor: pointer;
+            }
+            .alert_getVideoCoverOnYouTube .closeLinkPopup:hover {
+                opacity: 80%;
+                transition-duration: 0.5s;
+            }
+            /* /Alertas do campo do Linkda imagem */
         </style>
         <div class="linksForm card mb-3">
             <i class="fas fa-window-close closeFormLinks closeLinkRecord" title="Fechar"></i>
@@ -455,6 +530,45 @@ elseif (
                     initSample();
                 </script>
                 <!-- /CKEditor -->
+                <!-- Action for your selection -->
+                <script>
+                    $(function () {
+                        $("select[name=link_target]").change(function () {
+                            var link = $("select[name=link_target]").val();
+
+                            // Limpar os campos da PopUp
+                            document.getElementById("popup_width").value="";
+                            document.getElementById("popup_height").value="";
+                            
+                            if (link == "_blank") {
+                                // Ocultar os campos de "Largura" e "Altura" da PopUp.
+                                $(".popupWidthField").css({"display": "none"});
+                                $(".popupHeightField").css({"display": "none"});
+
+                                // Tamanho do campo "Nome / botão".
+                                $(".nameLinkField").removeClass("col-sm-4");
+                                $(".nameLinkField").addClass("col-sm-6");
+
+                                // Tamanho do campo "Alvo do Link".
+                                $(".targetLinkField").removeClass("col-sm-4");
+                                $(".targetLinkField").addClass("col-sm-6");
+                            } else if (link == "popup") {
+                                // Exibir os campos de "Largura" e "Altura" da PopUp.
+                                $(".popupWidthField").css({"display": "block"});
+                                $(".popupHeightField").css({"display": "block"});
+                                
+                                // Tamanho do campo "Nome / botão".
+                                $(".nameLinkField").removeClass("col-sm-6");
+                                $(".nameLinkField").addClass("col-sm-4");
+                                
+                                // Tamanho do campo "Alvo do Link".
+                                $(".targetLinkField").removeClass("col-sm-6");
+                                $(".targetLinkField").addClass("col-sm-4");
+                            }
+                        });
+                    });
+                </script>
+                <!-- /Action for your selection -->
                 <form action="javascript:func()" id="myFormLinks" name="myFormLinks" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="mb-3 col-sm-6">
@@ -525,141 +639,30 @@ elseif (
                                 <option value="5.0"<?= $_GET['page'] == "editLink" && $readyScriptsLinksDB['classification'] == "5.0" ? " selected" : NULL ?>>5.0 estrela</option>
                             </select>
                         </div>
-                        <div class="mb-3 col-sm-12">
+                        <div class="mb-6 col-sm-12">
                             <label for="link" class="form-label">Link (Copie e cole a URL)</label>
                             <input type="text" class="form-control inputNameForm" id="link" name="link"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['link']}\"" : NULL ?> placeholder="https://www.site.com/">
                         </div>
-                        <div class="mb-3 col-sm-6">
-                            <label for="link_location" class="form-label">Local do Link</label>
-                            <select id="link_location" name="link_location" class="form-select" aria-label="Default select example">
-                                <option value="external"<?= $_GET['page'] == "editLink" && $readyScriptsLinksDB['link_location'] == "external" ? " selected" : NULL ?>>Externo</option>
-                                <option value="hosted"<?= $_GET['page'] == "editLink" && $readyScriptsLinksDB['link_location'] == "hosted" ? " selected" : NULL ?>>Hospedado</option>
-                            </select>
-                        </div>
-                        <div class="mb-3 col-sm-3">
+                        <div class="mb-3 <?= $_GET['page'] == "addLink" || $readyScriptsLinksDB['link_target'] == "_blank" ? "col-sm-6" : "col-sm-4" ?> nameLinkField">
                             <label for="link_label" class="form-label">Nome / botão</label>
                             <input type="text" class="form-control inputNameForm" id="link_label" name="link_label"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['link_label']}\"" : NULL ?> placeholder="Acessar...">
                         </div>
-                        <div class="mb-3 col-sm-3">
-                            <!-- Action for your selection -->
-                            <script>
-                                $(function () {
-                                    $("select[name=link_target]").change(function () {
-                                        var link = $("select[name=link_target]").val();
-
-                                        // Limpar os campos da PopUp
-                                        document.getElementById("popup_width").value="";
-                                        document.getElementById("popup_height").value="";
-                                        
-                                        if (link == "_blank") {
-                                            // Ocultar os campos de "Largura" e "Altura" da PopUp.
-                                            $(".popupWidthField").css({"display": "none"});
-                                            $(".popupHeightField").css({"display": "none"});
-                                            // Tamanho do campo "Link da imagem (Cole a URL)".
-                                            $(".imageLinkField").removeClass("col-sm-5");
-                                            $(".imageLinkField").addClass("col-sm-9");
-                                        } else if (link == "popup") {
-                                            // Exibir os campos de "Largura" e "Altura" da PopUp.
-                                            $(".popupWidthField").css({"display": "block"});
-                                            $(".popupHeightField").css({"display": "block"});
-                                            // Tamanho do campo "Link da imagem (Cole a URL)".
-                                            $(".imageLinkField").removeClass("col-sm-9");
-                                            $(".imageLinkField").addClass("col-sm-5");
-                                        }
-                                    });
-                                });
-                            </script>
-                            <!-- /Action for your selection -->
+                        <div class="mb-3 <?= $_GET['page'] == "addLink" || $readyScriptsLinksDB['link_target'] == "_blank" ? "col-sm-6" : "col-sm-4" ?> targetLinkField">
                             <label for="link_target" class="form-label">Alvo do Link</label>
                             <select id="link_target" name="link_target" class="form-select" aria-label="Default select example">
                                 <option value="_blank"<?= $_GET['page'] == "editLink" && $readyScriptsLinksDB['link_target'] == "_blank" ? " selected" : NULL ?>>Nova página</option>
                                 <option value="popup"<?= $_GET['page'] == "editLink" && $readyScriptsLinksDB['link_target'] == "popup" ? " selected" : NULL ?>>PopUp</option>
                             </select>
                         </div>
-                        <div class="mb-3 col-sm-2 popupWidthField" style="display: none">
+                        <div class="mb-3 col-sm-2 popupWidthField"<?= $readyScriptsLinksDB['link_target'] == "popup" ? NULL : " style='display: none'" ?>>
                             <label for="popup_width" class="form-label">Largura</label>
                             <input type="text" class="form-control inputNameForm" id="popup_width" name="popup_width"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['popup_width']}\"" : NULL ?> placeholder="800">
                         </div>
-                        <div class="mb-3 col-sm-2 popupHeightField" style="display: none">
+                        <div class="mb-3 col-sm-2 popupHeightField"<?= $readyScriptsLinksDB['link_target'] == "popup" ? NULL : " style='display: none'" ?>>
                             <label for="popup_height" class="form-label">Altura</label>
                             <input type="text" class="form-control inputNameForm" id="popup_height" name="popup_height"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['popup_height']}\"" : NULL ?> placeholder="600">
                         </div>
-                        <div class="mb-3 col-sm-9 imageLinkField">
-                            <style>
-                                .alert_getVideoCoverOnYouTube {
-                                    position: fixed;
-                                    background: #e1e1e1 !important;
-                                    margin: 0;
-                                    padding: 10px 0;
-                                    top: 50%;
-                                    left: 50%;
-                                    border-radius: 5px;
-                                    box-shadow: -1px 10px 15px rgba(0,0,0,.6);
-                                    transform: translate(-50%, -50%);
-                                    z-index: 9999;
-                                }
-                                .alert_getVideoCoverOnYouTube h1 {
-                                    background: #ededed;
-                                    text-align: center;
-                                    margin: 0;
-                                    padding: 0 10px;
-                                }
-                                .alert_getVideoCoverOnYouTube p {
-                                    background: #f7f7f7;
-                                    text-align: center;
-                                    margin: 0;
-                                    padding: 0 10px;
-                                }
-                                .alert_getVideoCoverOnYouTube .fa-exclamation-triangle {
-                                    color: #f90;
-                                }
-                                .alert_getVideoCoverOnYouTube .YouTube_text_logo {
-                                    background: #000;
-                                    margin: 0;
-                                    padding: 2px 5px;
-                                    border-radius: 5px;
-                                    color: #fff;
-                                    font-weight: bold;
-                                }
-                                .alert_getVideoCoverOnYouTube .thumbnailBox {
-                                    margin: 0 5px 0 0;
-                                }
-                                .alert_getVideoCoverOnYouTube .thumbnailBox .thumbnailBox_FrontCover span {
-                                    position: absolute;
-                                    background: rgba(0,0,0,.75);
-                                    margin: 5px;
-                                    padding: 1px 5px;
-                                    border-radius: 3px;
-                                    color: #fff;
-                                    text-shadow: -1px 1px 2px #000;
-                                    z-index: 1;
-                                }
-                                .alert_getVideoCoverOnYouTube .thumbnailBox .thumbnailBox_FrontCover img {
-                                    opacity: 80%;
-                                    transition-duration: 0.5s;
-                                    margin: 2px;
-                                    border-radius: 5px;
-                                }
-                                .alert_getVideoCoverOnYouTube .thumbnailBox .thumbnailBox_FrontCover img:hover {
-                                    opacity: 100%;
-                                    transition-duration: 0.5s;
-                                    cursor: pointer;
-                                }
-                                .alert_getVideoCoverOnYouTube .closeLinkPopup {
-                                    position: absolute;
-                                    top: 15px;
-                                    right: 18px;
-                                    color: #f00;
-                                    opacity: 50%;
-                                    transition-duration: 0.5s;
-                                    font-size: 2em;
-                                    cursor: pointer;
-                                }
-                                .alert_getVideoCoverOnYouTube .closeLinkPopup:hover {
-                                    opacity: 80%;
-                                    transition-duration: 0.5s;
-                                }
-                            </style>
+                        <div class="mb-3 col-sm-12">
                             <script>
                                 // Enviar imagem para o campo
                                 function sendToTheField(id) {
@@ -722,13 +725,6 @@ elseif (
                             </script>
                             <label for="image" class="form-label">Link da imagem <i id="searchGoogleImages" class="fab fa-google" style="color: #f90; cursor: pointer;" title="Procurar no Google Imagens"></i> <i id="getVideoCoverOnYouTube" class="fab fa-youtube" style="color: #f00; cursor: pointer;" title="Obter capa se o link for do YouTube"></i> <i class="fas fa-broom clearImageLinkField" style="color: #f60; cursor: pointer;" title="Limpar o campo do Link da imagem"></i></label>
                             <input type="text" class="form-control inputNameForm" id="image" name="image"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['image']}\"" : NULL ?> placeholder="https://www.site.com/imgs/img.png">
-                        </div>
-                        <div class="mb-3 col-sm-3">
-                            <label for="image_location" class="form-label">Local da imagem</label>
-                            <select id="image_location" name="image_location"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['image_location']}\"" : NULL ?> class="form-select" aria-label="Default select example">
-                                <option value="external"<?= $_GET['page'] == "editLink" && $readyScriptsLinksDB['image_location'] == "external" ? " selected" : NULL ?>>Externo</option>
-                                <option value="hosted"<?= $_GET['page'] == "editLink" && $readyScriptsLinksDB['image_location'] == "hosted" ? " selected" : NULL ?>>Hospedado</option>
-                            </select>
                         </div>
                         <div class="mb-3 col-sm-12">
                             <label for="about" class="form-label">Sobre o link</label>

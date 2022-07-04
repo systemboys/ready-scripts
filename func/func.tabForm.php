@@ -172,13 +172,11 @@ elseif (
     $subtabs        = $_POST['subTab'];
     $name           = AntiSQLInjection($_POST['name']);
     $link           = $_POST['link'];
-    $link_location  = $_POST['link_location'];
     $link_label     = $_POST['link_label'];
     $link_target    = $_POST['link_target'];
     $popup_width    = $_POST['popup_width'];
     $popup_height   = $_POST['popup_height'];
     $image          = $_POST['image'];
-    $image_location = $_POST['image_location'];
     $about          = $_POST['about'];
     $author         = $_POST['author'];
     $url_git_hub    = isset($_POST['url_git_hub']) ? $_POST['url_git_hub'] : "";
@@ -207,10 +205,6 @@ elseif (
         $msgInfor = "Informe um \"Link\"!";
         $targetField = "link";
 
-    elseif (empty($link_location )):
-        $msgInfor = "Informe um \"Local do link\"!";
-        $targetField = "link_location";
-
     elseif (empty($link_label)):
         $msgInfor = "Informe um \"Nome\" para o botão!";
         $targetField = "link_label";
@@ -230,10 +224,6 @@ elseif (
     elseif (empty($image)):
         $msgInfor = "Informe uma \"Imagem\"!";
         $targetField = "image";
-
-    elseif (empty($image_location)):
-        $msgInfor = "Informe o \"Local da imagem\"!";
-        $targetField = "image_location";
 
     elseif (empty($about)):
         $msgInfor = "Informe algo \"Sobre\" o link!";
@@ -263,13 +253,11 @@ elseif (
                 'subtabs'        => $subtabs,
                 'name'           => $name,
                 'link'           => $link,
-                'link_location'  => $link_location,
                 'link_label'     => $link_label,
                 'link_target'    => $link_target,
                 'popup_width'    => $popup_width,
                 'popup_height'   => $popup_height,
                 'image'          => $image,
-                'image_location' => $image_location,
                 'about'          => $about,
                 'author'         => $author,
                 'url_git_hub'    => $url_git_hub,

@@ -27,7 +27,7 @@ if ($idAdmin != "deslogado"):
         foreach ($Read->getResult() as $readyScriptsLinksDB): endforeach;
 
         // Definir alvo (target="")
-        $link = ($readyScriptsLinksDB['link_location'] == "hosted" ? HOME . "/{$readyScriptsLinksDB['link']}" : $readyScriptsLinksDB['link']); // Definição do link
+        $link = $readyScriptsLinksDB['link']; // Definição do link
         switch ($readyScriptsLinksDB['link_target']) {
             case 'popup':
                 $linkTarget = "onclick='openPopupLink(`{$link}`, `{$readyScriptsLinksDB['popup_width']}`, `{$readyScriptsLinksDB['popup_height']}`);' href='#'";
@@ -37,15 +37,7 @@ if ($idAdmin != "deslogado"):
                 break;
             // Onde pode ser [_blank, popup]
         }
-        // Definição do link da imagem
-        switch ($readyScriptsLinksDB['image_location']) {
-            case 'hosted':
-                $imageLink = HOME . "/pic/demo-image/" . (!empty($readyScriptsLinksDB['image']) ? $readyScriptsLinksDB['image'] : "GettyImages-1129377183-850x500.png");
-                break;
-            case 'external':
-                $imageLink = $readyScriptsLinksDB['image'];
-                break;
-        }
+        $imageLink = $readyScriptsLinksDB['image'];
         
         echo "
             <div class='card mb-3 cardId_{$readyScriptsLinksDB['id']}'>
@@ -134,7 +126,7 @@ if ($idAdmin != "deslogado"):
         if ($Read->getResult()):
             foreach ($Read->getResult() as $readyScriptsLinksDB):
                 // Definir alvo (target="")
-                $link = ($readyScriptsLinksDB['link_location'] == "hosted" ? HOME . "/{$readyScriptsLinksDB['link']}" : $readyScriptsLinksDB['link']); // Definição do link
+                $link = $readyScriptsLinksDB['link']; // Definição do link
                 switch ($readyScriptsLinksDB['link_target']) {
                     case 'popup':
                         $linkTarget = "onclick='openPopupLink(`{$link}`, `{$readyScriptsLinksDB['popup_width']}`, `{$readyScriptsLinksDB['popup_height']}`);' href='#'";
@@ -144,19 +136,10 @@ if ($idAdmin != "deslogado"):
                         break;
                     // Onde pode ser [_blank, popup]
                 }
-                // Definição do link da imagem
-                switch ($readyScriptsLinksDB['image_location']) {
-                    case 'hosted':
-                        $imageLink = HOME . "/pic/demo-image/" . (!empty($readyScriptsLinksDB['image']) ? $readyScriptsLinksDB['image'] : "GettyImages-1129377183-850x500.png");
-                        break;
-                    case 'external':
-                        $imageLink = $readyScriptsLinksDB['image'];
-                        break;
-                }
+                $imageLink = $readyScriptsLinksDB['image'];
                 echo "
                 <div class='col-sm-6 cardId_{$readyScriptsLinksDB['id']}'>
                     <div class='card cardScriptTargetReadyAll' style='width: 18rem;'>
-                        " . ($readyScriptsLinksDB['image_location'] == "external" ? "<i class='fas fa-globe-americas webIndicatorIcon' title='Imagem da Web'></i>" : NULL) . "
                         <img id='{$readyScriptsLinksDB['id']}' onclick='scriptTargetReady(this.id)' src='{$imageLink}' class='card-img-top' alt='...'>
                         <div class='card-body'>
                             <div class='box_starRating' style='margin: -10px 0 5px 0;" . ($readyScriptsLinksDB['classification'] == "0.0" ? " display: none" : NULL) . "'>
@@ -202,7 +185,7 @@ if ($idAdmin != "deslogado"):
         if ($Read->getResult()):
             foreach ($Read->getResult() as $readyScriptsLinksDB):
                 // Definir alvo (target="")
-                $link = ($readyScriptsLinksDB['link_location'] == "hosted" ? HOME . "/{$readyScriptsLinksDB['link']}" : $readyScriptsLinksDB['link']); // Definição do link
+                $link = $readyScriptsLinksDB['link']; // Definição do link
                 switch ($readyScriptsLinksDB['link_target']) {
                     case 'popup':
                         $linkTarget = "onclick='openPopupLink(`{$link}`, `{$readyScriptsLinksDB['popup_width']}`, `{$readyScriptsLinksDB['popup_height']}`);' href='#'";
@@ -212,19 +195,10 @@ if ($idAdmin != "deslogado"):
                         break;
                     // Onde pode ser [_blank, popup]
                 }
-                // Definição do link da imagem
-                switch ($readyScriptsLinksDB['image_location']) {
-                    case 'hosted':
-                        $imageLink = HOME . "/pic/demo-image/" . (!empty($readyScriptsLinksDB['image']) ? $readyScriptsLinksDB['image'] : "GettyImages-1129377183-850x500.png");
-                        break;
-                    case 'external':
-                        $imageLink = $readyScriptsLinksDB['image'];
-                        break;
-                }
+                $imageLink = $readyScriptsLinksDB['image'];
                 echo "
                 <div class='col-sm-6 cardId_{$readyScriptsLinksDB['id']}'>
                     <div class='card cardScriptTargetReadyAll' style='width: 18rem;'>
-                        " . ($readyScriptsLinksDB['image_location'] == "external" ? "<i class='fas fa-globe-americas webIndicatorIcon' title='Imagem da Web'></i>" : NULL) . "
                         <img id='{$readyScriptsLinksDB['id']}' onclick='scriptTargetReady(this.id)' src='{$imageLink}' class='card-img-top' alt='...'>
                         <div class='card-body'>
                             <div class='box_starRating' style='margin: -10px 0 5px 0;" . ($readyScriptsLinksDB['classification'] == "0.0" ? " display: none" : NULL) . "'>
@@ -278,7 +252,7 @@ if ($idAdmin != "deslogado"):
                         <div class='card-body'>
                             ";
                             // Selecionar e recuperar os dados de 'Links de Scripts Prontos' para contar links externos
-                            $Read->FullRead("SELECT * FROM {$CSReadyScriptsLinks} WHERE primary_email = '{$primary_email}' AND link_location = 'external'");
+                            $Read->FullRead("SELECT * FROM {$CSReadyScriptsLinks} WHERE primary_email = '{$primary_email}'");
                             $quantityOfLinks = $Read->getRowCount();
                             echo "
                             <h5 class='card-title'>{$readyScriptsSettingsDB['page_title']}<br>Links externos: <strong>{$quantityOfLinks}</strong></h5>

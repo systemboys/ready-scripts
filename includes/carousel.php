@@ -11,7 +11,7 @@
             foreach ($Read->getResult() as $readyScriptsLinksDB):
                 echo "
         <div class='carousel-item'>
-            <img src='" . ($readyScriptsLinksDB['image_location'] == "hosted" ? HOME . "/pic/demo-image/{$readyScriptsLinksDB['image']}" : (!empty($readyScriptsLinksDB['image']) ? $readyScriptsLinksDB['image'] : $readyScriptsSettingsDB['front_cover'])) . "' class='d-block w-100' alt='{$readyScriptsLinksDB['name']}'>
+            <img src='" . (!empty($readyScriptsLinksDB['image']) ? $readyScriptsLinksDB['image'] : $readyScriptsSettingsDB['front_cover']) . "' class='d-block w-100' alt='{$readyScriptsLinksDB['name']}'>
         </div>
                 ";
             endforeach;
