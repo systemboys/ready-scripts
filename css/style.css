@@ -27,11 +27,12 @@ body .row .col-sm-9 .tab-content .tab-pane .container .row .scriptTargetReady .c
     margin: 0 0 20px 0;
 }
 /* Ícone indicador de Web que fica no canto superior direito da capa do link */
-body .row .col-sm-9 .tab-content .tab-pane .container .row .scriptTargetReady .container .row .col-sm-6 .cardScriptTargetReadyAll .webIndicatorIcon {
+body .row .col-sm-9 .tab-content .tab-pane .container .row .scriptTargetReady .container .row .col-sm-6 .cardScriptTargetReadyAll .popUpIndicatorIcon {
     position: absolute;
     top: 15px;
-    right: -20px;
-    color: #090;
+    right: -10px;
+    color: #999;
+    font-size: 1.5em;
     opacity: 80%;
     z-index: 2;
 }
