@@ -37,15 +37,22 @@ if (
         $targetField = "name";
 
     else:
-        // Registrar dados na tabela "Abas".
-        $Dados = [
-            'primary_email' => $primary_email,
-            'name'          => $name,
-            'slug'          => slug($name)
-        ];
+        // Registrar ou Atualizar dados na tabela "Abas".
         if ($_GET['action'] == "tabRecordForm"):
+            $Dados = [
+                'primary_email'   => $primary_email,
+                'name'            => $name,
+                'slug'            => slug($name),
+                'links_per_page'  => '10',
+                'pagination_page' => '1'
+            ];
             $Create->ExeCreate($CSReadyScriptsTabs, $Dados);
         elseif ($_GET['action'] == "tabEditForm"):
+            $Dados = [
+                'primary_email'   => $primary_email,
+                'name'            => $name,
+                'slug'            => slug($name)
+            ];
             $Update->ExeUpdate($CSReadyScriptsTabs, $Dados, "WHERE id = :id", "id={$id}");
         endif;
         echo "
@@ -108,16 +115,24 @@ elseif (
         $targetField = "name";
 
     else:
-        // Registrar dados na tabela "SubAbas".
-        $Dados = [
-            'primary_email' => $primary_email,
-            'tab'           => $idTab,
-            'name'          => $name,
-            'slug'          => slug($name)
-        ];
+        // Registrar ou Atualizar dados na tabela "SubAbas".
         if ($_GET['action'] == "subTabRecordForm"):
+            $Dados = [
+                'primary_email'   => $primary_email,
+                'tab'             => $idTab,
+                'name'            => $name,
+                'slug'            => slug($name),
+                'links_per_page'  => '10',
+                'pagination_page' => '1'
+            ];
             $Create->ExeCreate($CSReadyScriptsSubTabs, $Dados);
         elseif ($_GET['action'] == "subTabEditForm"):
+            $Dados = [
+                'primary_email'   => $primary_email,
+                'tab'             => $idTab,
+                'name'            => $name,
+                'slug'            => slug($name)
+            ];
             $Update->ExeUpdate($CSReadyScriptsSubTabs, $Dados, "WHERE id = :id", "id={$idSubTab}");
         endif;
         echo "
