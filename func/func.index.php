@@ -1,5 +1,6 @@
 <?php
 require '../_app/Config.inc.php';
+$Update = new Update; // Atualizar
 $Read = new Read; //Consultar
 include '../func/otherFunctions.php';
 include '../includes/tables.php';
@@ -64,7 +65,14 @@ if ($idAdmin != "deslogado"):
         isset($_GET['action']) && $_GET['action'] == "scriptTargetReadyAllSubTab"
         ):
         ######## TODAS AS MINIATURAS DE LINKS DE UMA CATEGORIA ########
-        $id = $_GET['id']; // ID das Tabs SubAbas
+        $id = $_GET['id']; // ID das Tabs e SubAbas
+        if ($_GET['action'] == "scriptTargetReadyAll"):
+            $links_per_page = table($CSReadyScriptsTabs, "links_per_page", "WHERE id = '{$id}'"); // Links por página
+            $pagination_page = table($CSReadyScriptsTabs, "pagination_page", "WHERE id = '{$id}'"); // Paginal atual
+        elseif ($_GET['action'] == "scriptTargetReadyAllSubTab"):
+            $links_per_page = table($CSReadyScriptsSubTabs, "links_per_page", "WHERE id = '{$id}'"); // Links por página
+            $pagination_page = table($CSReadyScriptsSubTabs, "pagination_page", "WHERE id = '{$id}'"); // Paginal atual
+        endif;
         echo "
         <script>
             // Se não houver nenhuma SubAba do banco de dados selecionada, será destacada a Aba 'Todos os links'
@@ -111,8 +119,8 @@ if ($idAdmin != "deslogado"):
             foreach ($Read->getResult() as $tabelaCount): endforeach;
             $tabelaCount = $tabelaCount['count'];
             
-            $quant_resul = "10"; // Quantidade de itens por página
-            $pagina      = "1"; // Página inicial
+            $quant_resul = $links_per_page; // Quantidade de itens por página
+            $pagina      = $pagination_page; // Página inicial
             $paginas     = ceil($tabelaCount / $quant_resul); // Calcula a quantidade de paginas
             $limit       = $quant_resul * ($pagina - "1");
     
@@ -180,6 +188,14 @@ if ($idAdmin != "deslogado"):
         // Calculando onde o limit deve começar na consulta
         $start = $pagina * $quant_resul;
         $pagina ++;
+
+        // Atualizar dados nas tabelas "Abas" e "SubAbas".
+        $Dados = ['pagination_page' => $pagina];
+        if ($item == "tab"):
+            $Update->ExeUpdate($CSReadyScriptsTabs, $Dados, "WHERE id = :id", "id={$idSubTab}");
+        elseif ($item == "subtabs"):
+            $Update->ExeUpdate($CSReadyScriptsSubTabs, $Dados, "WHERE id = :id", "id={$idSubTab}");
+        endif;
         
         // Selecionar e recuperar os dados de "Links"
         $Read->ExeRead($CSReadyScriptsLinks, "WHERE primary_email = '{$primary_email}' AND {$whereSubTab} ORDER BY id DESC LIMIT :limit, :offset", "limit={$start}&offset={$quant_resul}");
