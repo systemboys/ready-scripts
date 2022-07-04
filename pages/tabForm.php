@@ -654,11 +654,11 @@ elseif (
                                 <option value="popup"<?= $_GET['page'] == "editLink" && $readyScriptsLinksDB['link_target'] == "popup" ? " selected" : NULL ?>>PopUp</option>
                             </select>
                         </div>
-                        <div class="mb-3 col-sm-2 popupWidthField"<?= $readyScriptsLinksDB['link_target'] == "popup" ? NULL : " style='display: none'" ?>>
+                        <div class="mb-3 col-sm-2 popupWidthField"<?= $_GET['page'] == "editLink" && $readyScriptsLinksDB['link_target'] == "popup" ? NULL : " style='display: none'" ?>>
                             <label for="popup_width" class="form-label">Largura</label>
                             <input type="text" class="form-control inputNameForm" id="popup_width" name="popup_width"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['popup_width']}\"" : NULL ?> placeholder="800">
                         </div>
-                        <div class="mb-3 col-sm-2 popupHeightField"<?= $readyScriptsLinksDB['link_target'] == "popup" ? NULL : " style='display: none'" ?>>
+                        <div class="mb-3 col-sm-2 popupHeightField"<?= $_GET['page'] == "editLink" && $readyScriptsLinksDB['link_target'] == "popup" ? NULL : " style='display: none'" ?>>
                             <label for="popup_height" class="form-label">Altura</label>
                             <input type="text" class="form-control inputNameForm" id="popup_height" name="popup_height"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['popup_height']}\"" : NULL ?> placeholder="600">
                         </div>
