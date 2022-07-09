@@ -19,7 +19,7 @@ $Read->ExeRead($CSreadyScriptsBackgrounds, "WHERE primary_email = :primary_email
 foreach ($Read->getResult() as $readyScriptsBackgroundsDB): endforeach;
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
