@@ -149,7 +149,7 @@ if ($idAdmin != "deslogado"):
                 <div class='col-sm-6 cardId_{$readyScriptsLinksDB['id']}'>
                     <div class='card cardScriptTargetReadyAll' style='width: 18rem;'>
                         " . ($readyScriptsLinksDB['link_target'] == "popup" ? "<i class='fas fa-window-restore popUpIndicatorIcon' title='Este link abre numa PopUp'></i>" : NULL) . "
-                        <img id='{$readyScriptsLinksDB['id']}' onclick='scriptTargetReady(this.id)' src='{$imageLink}' class='card-img-top' alt='...'>
+                        <img id='{$readyScriptsLinksDB['id']}' onclick='scriptTargetReady(this.id)' src='{$imageLink}' class='card-img-top' alt='...' style='background: {$readyScriptsLinksDB['image_background_color']}; padding: {$readyScriptsLinksDB['image_padding']}px'>
                         <div class='card-body'>
                             <div class='box_starRating' style='margin: -10px 0 5px 0;" . ($readyScriptsLinksDB['classification'] == "0.0" ? " display: none" : NULL) . "'>
                                 " . starRating($readyScriptsLinksDB['classification']) . "

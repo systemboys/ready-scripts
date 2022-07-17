@@ -183,21 +183,23 @@ elseif (
     $idLink   = isset($_GET['idLink']) ? $_GET['idLink'] : NULL; // ID do Link quando for editado obitido via GET
 
     #OBTER OS DADOS DO FORMULÁRIO
-    $tab            = $_POST['tab'];
-    $subtabs        = $_POST['subTab'];
-    $name           = AntiSQLInjection($_POST['name']);
-    $link           = $_POST['link'];
-    $link_label     = $_POST['link_label'];
-    $link_target    = $_POST['link_target'];
-    $popup_width    = $_POST['popup_width'];
-    $popup_height   = $_POST['popup_height'];
-    $image          = $_POST['image'];
-    $about          = $_POST['about'];
-    $author         = $_POST['author'];
-    $url_git_hub    = isset($_POST['url_git_hub']) ? $_POST['url_git_hub'] : "";
-    $date           = reverseDate($_POST['date']);
-    $hour           = $_POST['hour'];
-    $classification = $_POST['classification'];
+    $tab                    = $_POST['tab'];
+    $subtabs                = $_POST['subTab'];
+    $name                   = AntiSQLInjection($_POST['name']);
+    $link                   = $_POST['link'];
+    $link_label             = $_POST['link_label'];
+    $link_target            = $_POST['link_target'];
+    $popup_width            = $_POST['popup_width'];
+    $popup_height           = $_POST['popup_height'];
+    $image                  = $_POST['image'];
+    $image_padding          = $_POST['image_padding'];
+    $image_background_color = $_POST['image_background_color'];
+    $about                  = $_POST['about'];
+    $author                 = $_POST['author'];
+    $url_git_hub            = isset($_POST['url_git_hub']) ? $_POST['url_git_hub'] : "";
+    $date                   = reverseDate($_POST['date']);
+    $hour                   = $_POST['hour'];
+    $classification         = $_POST['classification'];
 
     // Validações
     if (empty($_POST['tab'])):
@@ -236,9 +238,13 @@ elseif (
         $msgInfor = "Informe uma \"Altura\"!";
         $targetField = "popup_height";
 
-    elseif (empty($image)):
-        $msgInfor = "Informe uma \"Imagem\"!";
-        $targetField = "image";
+    elseif ($image_padding == ""):
+        $msgInfor = "Informe um \"Valor\"!";
+        $targetField = "image_padding";
+
+    elseif (empty($image_background_color)):
+        $msgInfor = "Informe uma \"Colo\"!";
+        $targetField = "image_background_color";
 
     elseif (empty($about)):
         $msgInfor = "Informe algo \"Sobre\" o link!";
@@ -263,22 +269,24 @@ elseif (
     else:
         // Registrar ou Editar "SubAbas".
             $Dados = [
-                'primary_email'  => $primary_email,
-                'tab'            => $tab,
-                'subtabs'        => $subtabs,
-                'name'           => $name,
-                'link'           => $link,
-                'link_label'     => $link_label,
-                'link_target'    => $link_target,
-                'popup_width'    => $popup_width,
-                'popup_height'   => $popup_height,
-                'image'          => $image,
-                'about'          => $about,
-                'author'         => $author,
-                'url_git_hub'    => $url_git_hub,
-                'date'           => $date,
-                'hour'           => $hour,
-                'classification' => $classification
+                'primary_email'          => $primary_email,
+                'tab'                    => $tab,
+                'subtabs'                => $subtabs,
+                'name'                   => $name,
+                'link'                   => $link,
+                'link_label'             => $link_label,
+                'link_target'            => $link_target,
+                'popup_width'            => $popup_width,
+                'popup_height'           => $popup_height,
+                'image'                  => $image,
+                'image_padding'          => $image_padding,
+                'image_background_color' => $image_background_color,
+                'about'                  => $about,
+                'author'                 => $author,
+                'url_git_hub'            => $url_git_hub,
+                'date'                   => $date,
+                'hour'                   => $hour,
+                'classification'         => $classification
             ];
         if ($_GET['action'] == "addLink"):
             $Create->ExeCreate($CSReadyScriptsLinks, $Dados);

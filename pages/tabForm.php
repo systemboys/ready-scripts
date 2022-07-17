@@ -662,7 +662,7 @@ elseif (
                             <label for="popup_height" class="form-label">Altura</label>
                             <input type="text" class="form-control inputNameForm" id="popup_height" name="popup_height"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['popup_height']}\"" : NULL ?> placeholder="600">
                         </div>
-                        <div class="mb-3 col-sm-12">
+                        <div class="mb-3 col-sm-8">
                             <script>
                                 // Enviar imagem para o campo
                                 function sendToTheField(id) {
@@ -725,6 +725,14 @@ elseif (
                             </script>
                             <label for="image" class="form-label">Link da imagem <i id="searchGoogleImages" class="fab fa-google" style="color: #f90; cursor: pointer;" title="Procurar no Google Imagens"></i> <i id="getVideoCoverOnYouTube" class="fab fa-youtube" style="color: #f00; cursor: pointer;" title="Obter capa se o link for do YouTube"></i> <i class="fas fa-broom clearImageLinkField" style="color: #f60; cursor: pointer;" title="Limpar o campo do Link da imagem"></i></label>
                             <input type="text" class="form-control inputNameForm" id="image" name="image"<?= $_GET['page'] == "editLink" ? " value=\"{$readyScriptsLinksDB['image']}\"" : NULL ?> placeholder="https://www.site.com/imgs/img.png">
+                        </div>
+                        <div class="mb-3 col-sm-2" title="Espaçamento entre a imagem e as bordas">
+                            <label for="image_padding" class="form-label">Esp/borda</label>
+                            <input type="text" class="form-control inputNameForm" id="image_padding" name="image_padding" value="<?= $_GET['page'] == "editLink" ? "{$readyScriptsLinksDB['image_padding']}" : "0" ?>" placeholder="Ex.: 5">
+                        </div>
+                        <div class="mb-3 col-sm-2" title="Cor do plano de imagens com fundo transparente">
+                            <label for="image_background_color" class="form-label">Cor/fundo</label>
+                            <input type="text" class="form-control inputNameForm" id="image_background_color" name="image_background_color" value="<?= $_GET['page'] == "editLink" ? "{$readyScriptsLinksDB['image_background_color']}" : "#FFFFFF" ?>" placeholder="Ex.: #FFF">
                         </div>
                         <div class="mb-3 col-sm-12">
                             <label for="about" class="form-label">Sobre o link</label>
