@@ -245,7 +245,7 @@ if ($idAdmin != "deslogado"):
                 $Read->ExeRead($CSReadyScriptsLinks, "WHERE tab = :tab", "tab={$readyScriptsTabsDB['id']}");
                 $countLinks = $Read->getRowCount();
                 echo "
-        <a class='list-group-item list-group-item-action list-group-item-secondary d-flex justify-content-between align-items-start' id='list-{$readyScriptsTabsDB['slug']}-list' onclick='clearScriptTarget({$readyScriptsTabsDB['id']})' data-bs-toggle='list' href='#list-{$readyScriptsTabsDB['slug']}' role='tab' aria-controls='list-{$readyScriptsTabsDB['slug']}'>{$readyScriptsTabsDB['name']}
+        <a class='idTabMenu{$readyScriptsTabsDB['id']} list-group-item list-group-item-action list-group-item-secondary d-flex justify-content-between align-items-start' id='list-{$readyScriptsTabsDB['slug']}-list' onclick='clearScriptTarget({$readyScriptsTabsDB['id']})' data-bs-toggle='list' href='#list-{$readyScriptsTabsDB['slug']}' role='tab' aria-controls='list-{$readyScriptsTabsDB['slug']}'>{$readyScriptsTabsDB['name']}
             <span class='badge bg-primary rounded-pill'>{$countLinks}</span>
         </a>
                 ";

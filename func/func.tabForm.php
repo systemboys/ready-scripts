@@ -57,8 +57,14 @@ if (
         endif;
         echo "
         <script>
-            // Ao salvar uma nova Aba, a página será atualizada.
-            location.reload();
+            // Ao salvar uma nova Aba, a página será atualizada. Se for editada, apenas a linha será atualizada.
+            var action = \"{$_GET['action']}\";
+            if (action == \"tabRecordForm\") {
+                location.reload();
+            } else if (action == \"tabEditForm\") {
+                $(\".tabForm\").remove();
+                $(\".idTabMenu{$id}\").html(\"{$name}\");
+            }
         </script>
         ";
     endif;
