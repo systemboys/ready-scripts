@@ -47,6 +47,8 @@ if (
                 'pagination_page' => '1'
             ];
             $Create->ExeCreate($CSReadyScriptsTabs, $Dados);
+            // Selecionar e recuperar o último registro de "Abas"
+            $Read->FullRead("SELECT * FROM {$CSReadyScriptsTabs} ORDER BY id DESC LIMIT 0, 1");
         elseif ($_GET['action'] == "tabEditForm"):
             $Dados = [
                 'primary_email'   => $primary_email,
@@ -54,7 +56,10 @@ if (
                 'slug'            => slug($name)
             ];
             $Update->ExeUpdate($CSReadyScriptsTabs, $Dados, "WHERE id = :id", "id={$id}");
+            // Selecionar e recuperar os dados de "Abas"
+            $Read->ExeRead($CSReadyScriptsTabs, "WHERE id = :id", "id={$id}");
         endif;
+        foreach ($Read->getResult() as $readyScriptsTabsDB): endforeach;
         echo "
         <script>
             // Ao registrar uma nova Aba, o menu com as Abas será atualizado.
@@ -76,10 +81,20 @@ if (
                             success: function(tabContent) {
                                 $(\".tabContent\").html(tabContent); // DIV de destino.
                                 $(\"#topProgressBar\").removeClass(\"progress-bar-striped progress-bar-animated\");
+
+                                // Mostrar o conteúdo da SubAba
+                                $(\".idSubTabMenu\").removeClass(\"active\");
+                                $(\".idSubTabMenu\").removeClass(\"show\");
+                                $(\".idSubTabMenu{$readyScriptsTabsDB['id']}\").addClass(\"active\");
+                                $(\".idSubTabMenu{$readyScriptsTabsDB['id']}\").addClass(\"show\");
                             }
                         });
                     }, 1000);
                     // ------- /Carregar as SubAbas -------
+
+                    // Selecionar a Aba
+                    $(\".list-group-item\").removeClass(\"active\");
+                    $(\".idTabMenu{$readyScriptsTabsDB['id']}\").addClass(\"active\");
                 }
             });
             // --------------- /Carregar as Abas ----------
@@ -118,6 +133,9 @@ elseif (isset($_GET['action']) && $_GET['action'] == "deleteTab"):
     if ($Delete->getResult()):
         echo "
         <script>
+            // Limpar o Alvo
+            $(\".tabContent\").html(\"\");
+
             // Ao deletar uma Aba, o menu com as Abas será atualizado.
             // --------------- Carregar as Abas ----------
             $(\".tabForm\").remove();
