@@ -57,14 +57,32 @@ if (
         endif;
         echo "
         <script>
-            // Ao salvar uma nova Aba, a página será atualizada. Se for editada, apenas a linha será atualizada.
-            var action = \"{$_GET['action']}\";
-            if (action == \"tabRecordForm\") {
-                location.reload();
-            } else if (action == \"tabEditForm\") {
-                $(\".tabForm\").remove();
-                $(\".idTabMenu{$id}\").html(\"{$name}\");
-            }
+            // Ao salvar uma nova Aba, a página será atualizada
+            // --------------- Carregar as Abas ----------
+            $(\".tabForm\").remove();
+            $(\"#topProgressBar\").addClass(\"progress-bar-striped progress-bar-animated\");
+            $.ajax({
+                url: \"" . HOME . "/func/func.index.php?action=tabList\",
+                type: \"GET\", // Método GET
+                success: function(tabList) {
+                    $(\".tabList\").html(tabList); // DIV de destino.
+                    $(\"#topProgressBar\").removeClass(\"progress-bar-striped progress-bar-animated\");
+                    // ------- Carregar as SubAbas -------
+                    setTimeout(function() {
+                        $(\"#topProgressBar\").addClass(\"progress-bar-striped progress-bar-animated\");
+                        $.ajax({
+                            url: \"" . HOME . "/func/func.index.php?action=tabContent\",
+                            type: \"GET\", // Método GET
+                            success: function(tabContent) {
+                                $(\".tabContent\").html(tabContent); // DIV de destino.
+                                $(\"#topProgressBar\").removeClass(\"progress-bar-striped progress-bar-animated\");
+                            }
+                        });
+                    }, 1000);
+                    // ------- /Carregar as SubAbas -------
+                }
+            });
+            // --------------- /Carregar as Abas ----------
         </script>
         ";
     endif;
