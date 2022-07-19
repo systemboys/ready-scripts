@@ -85,7 +85,6 @@ if (
                     });
                 </script>
                 <!-- END, SUBMIT A VIA AJAX FORM -->
-                <!-- <h5 class="card-title">Entre com suas credenciais</h5> -->
                 <form action="javascript:func()" id="myFormTab" name="myFormTab" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome da Aba</label>
@@ -252,7 +251,6 @@ elseif (
                     });
                 </script>
                 <!-- END, SUBMIT A VIA AJAX FORM -->
-                <!-- <h5 class="card-title">Entre com suas credenciais</h5> -->
                 <form action="javascript:func()" id="myFormSubTab" name="myFormSubTab" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome da SubAba</label>
